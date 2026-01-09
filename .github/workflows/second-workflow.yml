@@ -1,17 +1,16 @@
-name: Test
-on: push
+name: test-app-workflow
+on: [push, workflow_dispatch]
 jobs:
-    demo-on-push:
-        runs-on: ubuntu-latest
-        steps:
-           - name: setup
-             uses: actions/checkout@v3
-           - name: setup node
-             uses: actions/setup-node@v3 
-             with:
-                node-version: '18'
-           - run: npm ci
-           - run: npm test
-            
-        
-    
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Platform
+        uses: actions/checkout@v2.3.4
+      - name: Node Setup
+        uses: actions/setup-node@v2.1.3
+        with:
+          node-version: 18
+      - name: install dependencies
+        run: npm ci
+      - name: run tests
+        run: npm test
