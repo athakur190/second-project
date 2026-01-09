@@ -1,4 +1,4 @@
-name: test-app-workflow
+name: test-and-deploy
 on: [push, workflow_dispatch]
 jobs:
   Test:
@@ -14,3 +14,18 @@ jobs:
         run: npm ci
       - name: run tests
         run: npm test
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Platform
+        uses: actions/checkout@v2.3.4
+      - name: Node Setup
+        uses: actions/setup-node@v2.1.3
+        with:
+          node-version: 18
+      - name: install dependencies
+        run: npm ci
+      - name: Build Package
+        run: npm run build
+      - name: Upload
+        run: echo "Hosting on Web..."
