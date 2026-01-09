@@ -1,0 +1,8 @@
+name: Show github environment
+on: workflow_dispatch
+jobs:
+  environment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub environment
+        run: echo "${{github}}"
