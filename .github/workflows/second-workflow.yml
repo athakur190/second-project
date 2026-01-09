@@ -1,7 +1,7 @@
 name: Test
 on: push
 jobs:
-    test-apps:
+    demo-on-push:
         runs-on: ubuntu-latest
         steps:
            - name: setup
